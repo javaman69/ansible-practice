@@ -1,0 +1,14 @@
+ - name: Service Management
+   hosts: all
+   become: yes
+   tasks:
+     - name: Service start
+       service:
+         name: sshd
+         state: started
+         enabled: yes
+     - name: Service status check
+       command: systemctl status sshd
+       register: sshd_status
+     - debug:
+         var: sshd_status.stdout_lines
