@@ -2,12 +2,12 @@
    hosts: all
    become: yes
    tasks:
-     - name: Service start
+     - name: 01. Service start
        service:
          name: sshd
          state: started
          enabled: yes
-     - name: Service status check
+     - name: 02. Service status check
        command: systemctl status sshd
        register: sshd_status
      - debug:
