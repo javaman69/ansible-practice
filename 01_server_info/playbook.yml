@@ -1,0 +1,18 @@
+- name: Server ENV INFO check
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: 01. CPU INFO
+      debug:
+        var: ansible_processor
+    - name: 02. MEM INFO
+      debug:
+        var: ansible_memtotal_mb
+    - name: 03. DISK INOF
+      command: df -h /
+      register: disk_info
+    - debug:
+        var: disk_info.stdout_lines
+    - name: OS Ver INFO
+      debug:
+        var: ansible_distribution_version
