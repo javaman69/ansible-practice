@@ -2,7 +2,7 @@
   hosts: all
   gather_facts: yes
   tasks:
-    - name: 01. CPU INFO
+    - name: 01. CPU INFO.
       debug:
         var: ansible_processor
     - name: 02. MEM INFO
