@@ -1,0 +1,14 @@
+- name: nginx install and latest
+  hosts: all
+  become: yes
+  tasks:
+    - name: 01. nginx install
+      apt:
+        name: nginx
+        state: latest
+
+    - name: nginx status check
+      service:
+        name: nginx
+        state: started
+        enabled: yes
