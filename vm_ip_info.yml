@@ -1,7 +1,7 @@
 ---
 - name: ens0s8 인터페이스 IP 출력
   hosts: all
-  gether_facts: no
+  gather_facts: no
   tasks:
     - name: enp0s8 inet 정보확인
       command: ip a show enp0s8
