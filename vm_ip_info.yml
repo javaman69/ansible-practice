@@ -1,0 +1,14 @@
+---
+- name: ens0s8 인터페이스 IP 출력
+  hosts: all
+  gether_facts: no
+  tasks:
+    - name: enp0s8 inet 정보확인
+      command: ip a show enp0s8
+      register: ip_result
+    - name: inet 행 필터적용
+      set_fact:
+        inet_lines: "{{ ip_result.stdout_lines | select('search', 'inet ') | list }}"
+    - name: inet 행 출력하기
+      debug:
+        var: inet_lines
